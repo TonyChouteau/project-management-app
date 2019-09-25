@@ -1,0 +1,7 @@
+{
+    "protocole":"https",
+    "ip":"vps.tonychouteau.fr",
+    "port":"8081",
+    "count":"/count",
+    "list":"/projects"
+}
