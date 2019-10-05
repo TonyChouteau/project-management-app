@@ -3,5 +3,6 @@
     "ip":"vps.tonychouteau.fr",
     "port":"8081",
     "count":"/count",
+    "project":"/project",
     "list":"/projects"
 }

@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
         margin: "10px 10px 10px 10px",
         padding: theme.spacing(2),
         color: theme.palette.text.secondary,
-        minWidth: "410px",
+        width: "410px",
         height : "300px",
     },
 }));
@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
 function DisplayProjectList() {
     const classes = useStyles();
     const [count, setCount] = React.useState(0);
-    const [projects, setProjects] = React.useState({});
     
     if (count === 0)
     {
@@ -62,7 +61,7 @@ function DisplayProjectList() {
                 <Grid className={classes.grid} container direction="row" justify="center" alignItems="flex-start">
                         {[...Array(count)].map((e,i) => {
                             return (
-                                <Grid className={classes.cell} item>
+                                <Grid className={classes.cell} key={i} item>
                                     <ProjectThumbnail id={i}/>
                                 </Grid>
                             )
