@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
 function DisplayProjectList() {
     const classes = useStyles();
     const [count, setCount] = React.useState(0);
+    const [imagesList, setImagesList] = React.useState({});
     
     if (count === 0)
     {
