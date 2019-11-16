@@ -2,6 +2,7 @@ import React from 'react';
 
 import { createMuiTheme, MuiThemeProvider, makeStyles } from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 import ProjectThumbnail from "../ProjectThumbnail";
 import Config from "../../../Data/Config.json";
@@ -34,12 +35,15 @@ const useStyles = makeStyles(theme => ({
         width: "410px",
         height : "300px",
     },
+    title: {
+        marginTop: "20px",
+        color: "#ffffff",
+    }
 }));
 
 function DisplayProjectList() {
     const classes = useStyles();
     const [count, setCount] = React.useState(0);
-    const [imagesList, setImagesList] = React.useState({});
     
     if (count === 0)
     {
@@ -59,6 +63,9 @@ function DisplayProjectList() {
     return (
         <MuiThemeProvider theme={theme}>
             <div className={classes.root}>
+            <Typography className={classes.title} align="center" variant="h5">
+                &lt; Project-App currently under development /&gt;
+            </Typography>
                 <Grid className={classes.grid} container direction="row" justify="center" alignItems="flex-start">
                         {[...Array(count)].map((e,i) => {
                             return (

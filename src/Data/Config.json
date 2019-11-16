@@ -4,5 +4,9 @@
     "port":"8081",
     "count":"/count",
     "project":"/project",
-    "list":"/projects"
+    "list":"/projects",
+    "imagesLists":"/imageslists",
+    "imagesList":"/imageslist",
+    "image":"/images",
+    "default":"/0/na.png"
 }
