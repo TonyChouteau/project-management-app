@@ -13,6 +13,8 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1,
 	},
 	appbar : {
+		position: 'fixed',
+		top: 0,
 		backgroundColor: "#555555",
 		color: "#FFFFFF",
 	},
@@ -76,7 +78,7 @@ function DisplayAppBar() {
 						<SearchIcon />
 					</div>
 					<InputBase
-					placeholder="Search…"
+					placeholder="Recherche..."
 					classes={{
 						root: classes.inputRoot,
 						input: classes.inputInput,

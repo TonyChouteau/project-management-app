@@ -2,6 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
 
 import Config from '../../../Data/Config.json';
 import { Typography } from '@material-ui/core';
@@ -12,6 +13,8 @@ const useStyles = makeStyles(theme => ({
 		margin: '7px 7px 7px 7px',
 		padding: '5px',
 		color: theme.palette.text.secondary,
+		overflowWrap: "normal",
+		textOverflow: "ellipsis",
 		width: '300px',
 		height: '250px',
 	},
@@ -42,20 +45,22 @@ const useStyles = makeStyles(theme => ({
 		}
 	},
 	description: {
-		'& div' : {
-			padding: "10px",
-		},
 		color : "#ffffff",
 		position: "absolute",
 		width: "100%",
 		overflowWrap:"break-word",
 		overflow: "hidden",
-		textOverflow: "ellipsis",
 		height: 0,
 		bottom: 0,
 		background: "#000000AA",
 		transition: "height 1s, overflow 0s",
 		transitionDelay: "height 0s, overflow 1s",
+	},
+	descriptionDiv : {
+		padding: "10px",
+	},
+	link : {
+		lineHeight: "80%",
 	}
 }));
 
@@ -99,27 +104,67 @@ function ProjectThumbnail(props) {
 	return (
 		<div className={classes.root}>
 			<Paper className={classes.paper} padding={1}>
-				<Typography variant="h6" className={classes.title}>
-					{project.title}
-				</Typography>
+				<div style={{overflow: "hidden", textOverflow: "ellipsis"}}>
+					<Typography variant="h6" className={classes.title} noWrap>
+						{
+							project.link!=="#" 
+							? 
+								<Link href={project.link} target="_blank" color="inherit">
+									<div>
+									{project.title}
+									</div>
+								</Link>
+							:
+								<React.Fragment>
+									{project.title}
+   								</React.Fragment>
+						}
+					</Typography>
+				</div>
 				<Typography variant="subtitle2" className={classes.subtitle}>
-					{project.tags !== undefined ? project.tags[0].toUpperCase() + ' Project' : ''}
+					{project.tags !== undefined ? 'Projet ' + project.tags[0].toUpperCase() : ''}
 				</Typography>
 				<Paper className={classes.image} style={{ backgroundImage: 'url(' + backgroundImage + ')' }}>
 					<Paper className={classes.description}>
-						<div>
+						<div className={classes.descriptionDiv}>
 							{project.subtitle}
 							<hr></hr>
-							Projet {(() => {switch(project.type){
-								case 0:
-									return "Personnel";
-								case 1:
-									return "Professionnel";
-								case 2:
-									return "Hackathon";
-								default:
-									return "N/A";
-							}})()}
+							Type : {
+								(() => {switch(project.type){
+									case 0:
+										return "Personnel";
+									case 1:
+										return "Professionnel";
+									case 2:
+										return "Hackathon";
+									default:
+										return "N/A";
+								}})()
+							} | Status : {
+								(() => {switch(project.status){
+									case 0:
+										return "Futur";
+									case 1:
+										return "En cours";
+									case 2:
+										return "Fini";
+									default:
+										return "N/A";
+								}})()
+							}
+							<hr></hr>
+							{
+								project.sources !== "#" 
+								?
+									<Link href={project.sources} target="_blank" color="inherit" className={classes.link}>
+										Voir les sources
+									</Link>
+								:
+									<div className={classes.link}>
+										Sources indisponibles
+									</div>
+							}
+							
 						</div>
 					</Paper>
 				</Paper>

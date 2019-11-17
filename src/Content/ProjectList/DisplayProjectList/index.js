@@ -21,6 +21,7 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles(theme => ({
     root: {
+        marginTop: "90px",
         flexGrow: 1,
     },
     grid : {
@@ -64,9 +65,9 @@ function DisplayProjectList() {
         <MuiThemeProvider theme={theme}>
             <div className={classes.root}>
             <Typography className={classes.title} align="center" variant="h5">
-                &lt; Project-App currently under development /&gt;
+                &lt; Project-App actuellement en développement /&gt;
             </Typography>
-                <Grid className={classes.grid} container direction="row" justify="center" alignItems="flex-start">
+                <Grid className={classes.grid} container direction="row" justify='center'>
                         {[...Array(count)].map((e,i) => {
                             return (
                                 <Grid className={classes.cell} key={i} item>
